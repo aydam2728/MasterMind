@@ -2,21 +2,19 @@ import java.awt.Color;
 
 public class Rangée {
 	Color[] jetons = new Color[4];
-	int indiceJetons = 0;
-	int res;
+	boolean complete = false;
+	int noir;
+	int blanc;
 	
 	
 	public Rangée(Color[] jet) {
 		jet = this.jetons;
+		this.noir = 0;
+		this.blanc = 0;
 	}
 	public void ligne() {
-		if (this.indiceJetons == Modèle.DIFFICULTE ) {
-			System.out.println("La ligne est complète");
-		}
-		else if (0 < this.indiceJetons && this.indiceJetons < 4) {
-			System.out.println("La ligne est entamée");
-		}else {
-			System.out.println("La ligne n'est pas commencé");
+		if (this.jetons.length == Modèle.DIFFICULTE ) {
+			this.complete = true;
 		}
 	}
 	public void addToLine(Color c) {
@@ -24,3 +22,4 @@ public class Rangée {
 		this.ligne();
 	}
 }
+
