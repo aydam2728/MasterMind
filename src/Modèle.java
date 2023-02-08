@@ -8,7 +8,7 @@ public class Modèle {
 	public static enum Etat {ENEN_COURS,GAGNé,PERDU};
 	
 	Etat état;
-	Rangée combinaison;
+	static Rangée combinaison;
 	Rangée[] prpopositions;
 	int tentative;
 	public Modèle(){

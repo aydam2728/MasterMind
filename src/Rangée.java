@@ -3,6 +3,9 @@ import java.awt.Color;
 public class Rangée {
 	Color[] jetons = new Color[4];
 	int indiceJetons = 0;
+	int res;
+	
+	
 	public Rangée(Color[] jet) {
 		jet = this.jetons;
 	}
@@ -17,4 +20,17 @@ public class Rangée {
 			System.out.println("La ligne n'est pas commencé");
 		}
 	}
+	public int score() {
+		for(int i = 0; i < this.jetons.length; i++) {
+			try {
+				if(this.jetons[i]== Modèle.combinaison[i]) {
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return this.res;
+	}         
 }
