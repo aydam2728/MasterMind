@@ -21,5 +21,8 @@ public class Rangée {
 		this.jetons[this.jetons.length] = c;
 		this.ligne();
 	}
+	public Color getColor(int indice) {
+		return this.jetons[indice];
+	}
 }
 
