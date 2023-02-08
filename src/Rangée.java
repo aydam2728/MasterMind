@@ -8,10 +8,10 @@ public class Rangée {
 	}
 	public void ligne(Color[] jet) {
 		jet = this.jetons;
-		if (this.indiceJetons == Modeèe.Difficulté ) {
+		if (this.indiceJetons == Modèle.DIFFICULTE ) {
 			System.out.println("La ligne est complète");
 		}
-		else if (0 < this.indiceJetons && this.indiceJetons < Modeèe.Difficulté) {
+		else if (0 < this.indiceJetons && this.indiceJetons < Modèle.DIFFICULTE) {
 			System.out.println("La ligne est entamée");
 		}else {
 			System.out.println("La ligne n'est pas commencé");
