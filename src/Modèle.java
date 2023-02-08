@@ -4,12 +4,12 @@ import java.util.Random;
 public class Modèle {
 	public static final Color[] COULEURS = {Color.YELLOW,Color.GREEN,Color.BLUE,Color.MAGENTA,Color.RED,Color.ORANGE,Color.BLACK,Color.WHITE};
 	public static final int N_TENTATIVES = 0;
-	public static final int DIFFICULTE =0 ;
+	public static final int DIFFICULTE =4;
 	public static enum Etat {ENEN_COURS,GAGNé,PERDU};
 	
 	Etat état;
-	static Rangée combinaison;
-	Rangée[] prpopositions;
+	Rangée combinaison;
+	Rangée[] propositions;
 	int tentative;
 	public Modèle(){
 		Random rand = new Random();
@@ -21,5 +21,11 @@ public class Modèle {
 		this.combinaison = new Rangée(temp);
 	}
 	
+	public void CreateProposition(Color c) {
+		this.propositions[this.propositions.length] = new  Rangée(new Color[] {c});
+	}
 	
+	public void AddToProposition(int i, Color c) {
+		this.propositions[i].addToLine(c);
+	}
 }

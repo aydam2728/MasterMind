@@ -9,9 +9,8 @@ public class Rangée {
 	public Rangée(Color[] jet) {
 		jet = this.jetons;
 	}
-	public void ligne(Color[] jet) {
-		jet = this.jetons;
-		if (this.indiceJetons == 4) {
+	public void ligne() {
+		if (this.indiceJetons == Modèle.DIFFICULTE ) {
 			System.out.println("La ligne est complète");
 		}
 		else if (0 < this.indiceJetons && this.indiceJetons < 4) {
@@ -20,17 +19,8 @@ public class Rangée {
 			System.out.println("La ligne n'est pas commencé");
 		}
 	}
-	public int score() {
-		for(int i = 0; i < this.jetons.length; i++) {
-			try {
-				if(this.jetons[i]== Modèle.combinaison[i]) {
-					
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}
-		return this.res;
-	}         
+	public void addToLine(Color c) {
+		this.jetons[this.jetons.length] = c;
+		this.ligne();
+	}
 }
