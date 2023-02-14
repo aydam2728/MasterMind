@@ -12,6 +12,9 @@ public class Modèle {
 	Rangée[] propositions;
 	int tentative;
 	public Modèle(){
+		//
+	}
+	public void newCombinaison() {
 		Random rand = new Random();
 		Color[] temp= new Color[4];
 		for (int i = 0; i < 4; i++) {
