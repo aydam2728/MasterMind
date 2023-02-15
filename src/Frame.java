@@ -7,17 +7,20 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 public class Frame extends javax.swing.JFrame{
 	Graphics g ;
+	ArrayList<JButton> buttons = new ArrayList<JButton>() ;
+	JPanel VueClavier;
 	public Frame(Color[] COULEURS,Contrôleur ctrl) {
 		
-		JPanel VueClavier = new JPanel();
-		getContentPane().add(VueClavier, BorderLayout.SOUTH);
-		VueClavier.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
+		this.VueClavier = new JPanel();
+		getContentPane().add(this.VueClavier, BorderLayout.SOUTH);
+		this.VueClavier.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
 		
 		//Creation des boutons 
 		for(Color r : COULEURS) {
@@ -25,23 +28,24 @@ public class Frame extends javax.swing.JFrame{
 			btnNewButton.setBackground(r);
 			btnNewButton.setPreferredSize(new Dimension(50, 50));
 			btnNewButton.addActionListener(ctrl);
-			VueClavier.add(btnNewButton);
+			this.VueClavier.add(btnNewButton);
+			this.buttons.add(btnNewButton);
 		}
 		
 		
 		Canvas VuePropositions = new Canvas();
 		getContentPane().add(VuePropositions, BorderLayout.CENTER);
-		this.getContentPane().setPreferredSize(new Dimension(500, 500));
+		this.getContentPane().setPreferredSize(new Dimension(500, 650));
 	    this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.g = VuePropositions.getGraphics();
+		
 	}
 	
 	public void addCircle(Color c,int i,int tentative) {
-		System.out.println(i);
 		g.setColor(c);
-		this.g.fillOval(i*100, 50+(tentative*50), 25, 25);
+		this.g.fillOval(20+i*100, 50+(tentative*50), 25, 25);
 		
 	}
 	
@@ -60,6 +64,13 @@ public class Frame extends javax.swing.JFrame{
 
 			}
 
+		}
+	}
+	
+	public void deleteAllButtons() {
+		for (JButton button : this.buttons) {
+			button.setEnabled(false);
+			
 		}
 	}
 

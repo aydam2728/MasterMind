@@ -1,7 +1,9 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JButton;
 
@@ -21,23 +23,29 @@ public class Contrôleur implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		this.modele.AddToProposition(((JButton) e.getSource()).getBackground());
-		//System.out.println(((JButton) e.getSource()).getBackground());
 		this.frame.addCircle(((JButton) e.getSource()).getBackground(), this.modele.propositions[this.modele.tentative].indiceJeton-1, this.modele.tentative);
-		this.frame.addMinus(((JButton) e.getSource()).getBackground(), this.modele.propositions[this.modele.tentative].indiceJeton-1, this.modele.tentative);
-
+		
+		if (this.modele.propositions[this.modele.tentative].complete) {
+		List<Integer> values = this.modele.calcul();
+		for (int i=0;i<values.get(0);i++) {
+			this.frame.addMinus(Color.black, i, this.modele.tentative);
+		}
+		for (int i=0;i<values.get(1);i++) {
+			this.frame.addMinus(Color.white, i, this.modele.tentative);
+		}
 		this.checkWin();
-		//System.out.println(this.modele.propositions[this.modele.tentative]);
+		}
 	}
 	
 	public void checkWin() {
-		if (this.modele.propositions[this.modele.tentative].complete) {
+		
 			if (Arrays.equals(this.modele.propositions[this.modele.tentative].jetons, this.modele.combinaison.jetons)){
 				System.out.println("gg");
-			}else {
-				System.out.println("gros naze");
+			
+			}else if (this.modele.tentative == 9){
+				System.out.println("Perdu");
+				this.frame.deleteAllButtons();
+				
 			}
-
-		
-		}
-	}
+}
 }

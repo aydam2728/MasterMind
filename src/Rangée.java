@@ -9,12 +9,12 @@ public class Rangée {
 	int noir;
 	int blanc;
 	
-	
 	public Rangée(Color[] jet,int DIFFICULTE) {
 		this.DIFFICULTE = DIFFICULTE;
 		this.jetons =jet;
 		this.noir = 0;
 		this.blanc = 0;
+		
 	}
 	public Rangée(Color c,int DIFFICULTE) {
 		this.DIFFICULTE = DIFFICULTE;

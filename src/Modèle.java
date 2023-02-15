@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Modèle {
@@ -10,7 +12,7 @@ public class Modèle {
 	Etat état;
 	Rangée combinaison;
 	Rangée[] propositions = new Rangée[10];
-	int tentative;
+	int tentative=0;
 	public Modèle(){
 		//
 	}
@@ -22,7 +24,6 @@ public class Modèle {
 	        temp[i]= this.COULEURS[randomIndex];
 	    }
 		this.combinaison = new Rangée(temp,this.DIFFICULTE);
-		System.out.println(this.combinaison);
 		this.CreateProposition(null);
 	}
 	
@@ -32,23 +33,29 @@ public class Modèle {
 	
 	public void AddToProposition(Color c) {
 		if (this.propositions[this.tentative].complete) {this.tentative ++ ;this.CreateProposition(c);}
-		else {System.out.println("here");  this.propositions[this.tentative].addToLine(c);}
+		this.propositions[this.tentative].addToLine(c);
 	}
 	
-	public void calcul() {
+	public List calcul() {
+		List<Integer> values = new ArrayList<>();
 		int noir=0;
 		int blanc=0;
 		for(int i=0 ;i<this.DIFFICULTE;i++) {
 			if(this.propositions[this.tentative].jetons[i] == this.combinaison.jetons[i]) {
 				noir++;
-			}
-			for (int y=0 ;y<this.DIFFICULTE;y++)
-			if (this.propositions[this.tentative].jetons[i] ==this.combinaison.jetons[y] && blanc<5) {
-				blanc ++;
+			}else {
+				for (int y=0 ;y<this.DIFFICULTE;y++)
+					if (this.propositions[this.tentative].jetons[i] == this.combinaison.jetons[y] && blanc<5 && i!=y) {
+						blanc ++;
+					}
 			}
 		}
 		this.propositions[this.tentative].blanc = blanc;
 		this.propositions[this.tentative].noir = noir;
+		
+		values.add(noir);
+		values.add(blanc);
+		return values;
 	}
 	
 }
