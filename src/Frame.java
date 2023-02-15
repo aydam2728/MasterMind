@@ -37,5 +37,4 @@ public class Frame extends javax.swing.JFrame{
 	}
 
 
-
 }
