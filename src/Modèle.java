@@ -9,7 +9,7 @@ public class Modèle {
 	
 	Etat état;
 	Rangée combinaison;
-	Rangée[] propositions;
+	Rangée[] propositions = new Rangée[10];
 	int tentative;
 	public Modèle(){
 		//
@@ -21,14 +21,19 @@ public class Modèle {
 	        int randomIndex = rand.nextInt(this.COULEURS.length);
 	        temp[i]= this.COULEURS[randomIndex];
 	    }
-		this.combinaison = new Rangée(temp);
+		this.combinaison = new Rangée(temp,this.DIFFICULTE);
+		System.out.println(this.combinaison);
+		this.CreateProposition(null);
 	}
 	
 	public void CreateProposition(Color c) {
-		this.propositions[this.propositions.length] = new  Rangée(new Color[] {c});
+		this.propositions[this.tentative] = new  Rangée(c,this.DIFFICULTE);
 	}
 	
-	public void AddToProposition(int i, Color c) {
-		this.propositions[i].addToLine(c);
+	public void AddToProposition(Color c) {
+		if (this.propositions[this.tentative].complete) {this.tentative ++ ;this.CreateProposition(c);}
+		else {System.out.println("here");  this.propositions[this.tentative].addToLine(c);}
 	}
+	
+	
 }
