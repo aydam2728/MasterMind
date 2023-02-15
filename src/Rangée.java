@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Rangée {
 	Color[] jetons = new Color[4];
-	int indiceJeton;
+	int indiceJeton=0;
 	int DIFFICULTE;
 	boolean complete = false;
 	int noir;

@@ -35,5 +35,20 @@ public class Modèle {
 		else {System.out.println("here");  this.propositions[this.tentative].addToLine(c);}
 	}
 	
+	public void calcul() {
+		int noir=0;
+		int blanc=0;
+		for(int i=0 ;i<this.DIFFICULTE;i++) {
+			if(this.propositions[this.tentative].jetons[i] == this.combinaison.jetons[i]) {
+				noir++;
+			}
+			for (int y=0 ;y<this.DIFFICULTE;y++)
+			if (this.propositions[this.tentative].jetons[i] ==this.combinaison.jetons[y] && blanc<5) {
+				blanc ++;
+			}
+		}
+		this.propositions[this.tentative].blanc = blanc;
+		this.propositions[this.tentative].noir = noir;
+	}
 	
 }
